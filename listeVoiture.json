@@ -1,0 +1,14 @@
+{
+"name":"listVoiture",
+
+"tabVoiture":[ 
+	{"idVoit":"0","modele":"Audi TT","puissance":"12000","prix":"14500","vitMax":"220"},
+	{"idVoit":"1","modele":"Austin Martin","puissance":"11200","prix":"22000","vitMax":"280"},
+	{"idVoit":"2","modele":"Fiat 500","puissance":"7000","prix":"8000","vitMax":"170"},
+	{"idVoit":"3","modele":"4Ailes","puissance":"12000","prix":"14500","vitMax":"122"},
+	{"idVoit":"4","modele":"lamborgini","puissance":"32000","prix":"82000","vitMax":"450"},
+	{"idVoit":"5","modele":"ferrari","puissance":"31000","prix":"93000","vitMax":"480"},
+	{"idVoit":"6","modele":"Ford berline","puissance":"28000","prix":"32000","vitMax":"310"}
+]
+
+}
