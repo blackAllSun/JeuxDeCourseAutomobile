@@ -29,7 +29,9 @@ class Adresse(object):
 	def toString(self):
 		return self.ville+" "+self.pays
 class Entreprise(object):
-	def __init__(self,nom,adresse,budget):
+	def __init__(self,idEntreprise,nom,adresse,budget):
+		self.idEntreprise
+		=idEntreprise
 		self.nom=nom
 		self.adresse=adresse
 		self.budget=budget
@@ -48,11 +50,9 @@ class Entreprise(object):
 	def afficher(self):
 		print("Entreprise nom : ",self.nom," adresse : ",self.adresse.toString()," budget : ",self.budget)
 class Ecurie(Entreprise):
-
-	def __init__(self,nom,adresse,budget):
-		super().__init__(nom,adresse,budget)
+	def __init__(self,idEcurie,nom,adresse,budget):
+		super().__init__(idEcurie,nom,adresse,budget)
 		self.tabPilote=np.array([0,1])
-		self.tabVoiture=np.array(range(0,11,1))
 	def addPilote(self,idPilote,nom,prenom,age,voiture,saison):
 		if tabPilote[idPilote] in 0:
 			pilote=Pilote(self,nom,prenom,age,Statut.PILOTE,voiture,saison)
@@ -61,18 +61,7 @@ class Ecurie(Entreprise):
 			pilote=Pilote(self,nom,prenom,age,Statut.CO_PILOTE,voiture,saison)
 			self.tabPilote.append(pilote)
 			return pilote
-	def searchVoiture(self,idVoit):
-		with open('listeVoiture.json', 'r') as f:
-			datas = json.load(f)
-			idVoiture=int(datas["tabVoiture"][idVoit]["idVoit"])
-			print(type(idVoiture))
-			modele=datas["tabVoiture"][idVoit]["modele"]
-			puissance=int(datas["tabVoiture"][idVoit]["puissance"])
-			prix=int(datas["tabVoiture"][idVoit]["prix"])
-			vitesseMax=int(datas["tabVoiture"][idVoit]["vitMax"])
-			voiture=Voiture(idVoiture,modele,puissance,prix,vitesseMax)
-			self.tabVoiture[idVoiture]=voiture
-		return voiture
+
 	def toString(self):
 		return self.nom+" "+self.adresse.toString()+" "+str(self.budget)
 	def afficher(self):
@@ -84,6 +73,17 @@ class Voiture(object):
 		self.puissance=puissance
 		self.prix=prix
 		self.vitMax=vitMax
+	def searchVoiture(self,idVoit):
+		with open('listeVoiture.json', 'r') as f:
+			datas = json.load(f)
+			idVoiture=int(datas["tabVoiture"][idVoit]["idVoit"])
+			print(type(idVoiture))
+			modele=datas["tabVoiture"][idVoit]["modele"]
+			puissance=int(datas["tabVoiture"][idVoit]["puissance"])
+			prix=int(datas["tabVoiture"][idVoit]["prix"])
+			vitesseMax=int(datas["tabVoiture"][idVoit]["vitMax"])
+			voiture=Voiture(idVoiture,modele,puissance,prix,vitesseMax)
+		return voiture
 	def getModele(self):
 		return self.modele
 	def setModele(self,modele):
@@ -113,23 +113,38 @@ class Saison(Enum):
 	AUTONOMNE=3
 	HIVER=4
 class Pilote(object):
-	def __init__(self,nom,prenom,age,statut,voiture,saison):
+	def __init__(self,nom,prenom,age,statut,voiture):
 		self.nom=nom
 		self.prenom=prenom
 		self.age=age
 		self.statut=statut
 		self.voiture=voiture
-		self.saison=saison
+
 	def toString(self):
-		return self.nom+" "+self.prenom+" "+str(self.age)+" "+str(self.statut)+" "+self.voiture.toString()+" "+str(self.saison)
+		return self.nom+" "+self.prenom+" "+str(self.age)+" "+str(self.statut)+" "+self.voiture.toString()
 	def afficher(self):
-		print("Pilote : ",self.nom," ",self.prenom," ",str(self.age)," ",str(self.statut)," ",self.voiture.toString()," ",str(self.saison))
+		print("Pilote : ",self.nom," ",self.prenom," ",str(self.age)," ",str(self.statut)," ",self.voiture.toString())
+class Sponsor(Entreprise):
+	def __init__(self,idSponsor,nom,adresse,budget):
+		super().__init__(idSponsor,nom,adresse,budget)
+	def searchSponsor(idSponsor):
+		with open('listeVoiture.json', 'r') as f:
+			datas = json.load(f)
+			idSponsor=int(datas["tabSponsor"][idVoit]["idVoit"])
+			print(type(idVoiture))
+			nom=datas["tabSponsor"][idVoit]["nom"]
+			puissance=int(datas["tabSponsor"][idVoit]["puissance"])
+			adresse=int(datas["tabSponsor"][idVoit]["adresse"])
+			budget=int(datas["tabSponsor"][idVoit]["budget"])
+			voiture=Sponsor(idSponsor,nom,adresse,budget)
+		return voiture
 class Contrat(object):
-	def __init__(self,saison,ecurie,pilote,copilote):
+	def __init__(self,saison,ecurie,pilote,copilote,sponsor):
 		self.saison=saison
 		self.ecurie=ecurie
 		self.pilote=pilote
 		self.copilote=copilote
+		self.sponsor=sponsor
 	def getSaison(self):
 		return self.saison
 	def setSaison(self,saison):

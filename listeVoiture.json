@@ -1,5 +1,5 @@
 {
-"name":"listVoiture",
+"name":"données jeux",
 
 "tabVoiture":[ 
 	{"idVoit":"0","modele":"Audi TT","puissance":"12000","prix":"14500","vitMax":"220"},
@@ -9,6 +9,22 @@
 	{"idVoit":"4","modele":"lamborgini","puissance":"32000","prix":"82000","vitMax":"450"},
 	{"idVoit":"5","modele":"ferrari","puissance":"31000","prix":"93000","vitMax":"480"},
 	{"idVoit":"6","modele":"Ford berline","puissance":"28000","prix":"32000","vitMax":"310"}
+],
+"tabPilote":[
+	{"idPilote":"0","nom":"Skylwalker","prenom":"Anakin","age":"42","statut":"pilote"},
+	{"idPilote":"1","nom":"Skylwalker","prenom":"Leila","age":"64","statut":"pilote"},
+	{"idPilote":"2","nom":"Drone","prenom":"RD2D","age":"40","statut":"co_pilote"},
+	{"idPilote":"3","nom":"Drone","prenom":"C-3PO","age":"44","statut":"co_pilote"},
+],
+"tabSponsor":[
+	{"idSponsor":"0","nom":"Qui-Gon Jinn","budget":"14000"},
+	{"idSponsor":"1","nom":"Owen Lars","budget":"12000"},
+	{"idSponsor":"2","nom":" Han Solo","budget":"24000"}
+	]
+"tabAdresse":[
+	{"idAdresse":"0","ville":"Tatooine","pays":"Arkanis"},
+	{"idAdresse":"1","ville":"Mandalore","pays":"Ordo"},
+	{"idAdresse":"2","ville":"Mandalore","pays":"Shogun"},
+	{"idAdresse":"3","ville":"Ahakista","pays":"Ahakista"}
 ]
-
 }
