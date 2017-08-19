@@ -3,9 +3,7 @@
 #
 #  testPojo.py
 #  
-#  Copyright 2017 BlackAllSun <attilavlh10@gmail.com>
-#  
-#  
+
 from pprint import pprint
 import json
 from pojo import *
