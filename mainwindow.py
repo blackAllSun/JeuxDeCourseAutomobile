@@ -2,8 +2,6 @@
 # -*- coding: utf-8 -*-
 #
 #  mainwindow.py
-#  
-#  Copyright 2017 BlackAllSun <attilavlh10@gmail.com>
 #
 import gi
 gi.require_version('Gtk', '3.0')
